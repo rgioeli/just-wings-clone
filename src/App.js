@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Routes, Route, Outlet, NavLink } from "react-router-dom";
+import Layout from "./layout/Layout";
+import Home from "./pages/home/components/Home";
+import Order from "./pages/order/components/Order";
+import Menu from "./pages/order/components/menu/Menu";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="/menu" element={<Menu />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/order/:method" element={<Order />} />
+      </Route>
+    </Routes>
   );
+}
+
+function Contact() {
+  return <p>Contact</p>;
 }
 
 export default App;
