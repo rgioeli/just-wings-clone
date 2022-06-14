@@ -1,9 +1,17 @@
 import styled from "styled-components";
 import Card from "./Card";
 import Header from "./Header";
-import { menuItems } from "../../../data/menuItems";
+import { menuItems } from "../../../../data/menuItems";
+import { useState } from "react";
+import Modal from "./Modal";
 
 const Menu = () => {
+  const [showModal, setShowModal] = useState(true);
+
+  const handleAddToOrder = () => {
+    setShowModal(!showModal)
+  }
+
   return (
     <MenuWrapper>
       {/* we are going to need a header component */}
@@ -17,16 +25,16 @@ const Menu = () => {
           }
         />
         <CardWrapper>
-          {menuItems.popularItems.map(({ name, description, src }) => (
-            <Card title={name} description={description} src={src} />
+          {menuItems.popularItems.map(({ name, description, src, price }) => (
+            <Card title={name} description={description} src={src} price={price} />
           ))}
         </CardWrapper>
       </PopularItems>
       <ComboMeals>
         <Header />
         <CardWrapper>
-          {menuItems.comboMeals.map(({ name, description, src }) => (
-            <Card title={name} description={description} src={src} />
+          {menuItems.comboMeals.map(({ name, description, src, price }) => (
+            <Card title={name} description={description} src={src} price={price} />
           ))}
         </CardWrapper>
       </ComboMeals>
@@ -38,8 +46,8 @@ const Menu = () => {
           }
         />
         <CardWrapper>
-          {menuItems.justWings.map(({ name, description, src }) => (
-            <Card title={name} description={description} src={src} />
+          {menuItems.justWings.map(({ name, description, src, price }) => (
+            <Card title={name} description={description} src={src} price={price} />
           ))}
         </CardWrapper>
       </JustWings>
@@ -51,8 +59,8 @@ const Menu = () => {
           }
         />
         <CardWrapper>
-          {menuItems.partyStyle.map(({ name, description, src }) => (
-            <Card title={name} description={description} src={src} />
+          {menuItems.partyStyle.map(({ name, description, src, price }) => (
+            <Card title={name} description={description} src={src} price={price} />
           ))}
         </CardWrapper>
       </PartyStyle>
@@ -64,8 +72,8 @@ const Menu = () => {
           }
         />
         <CardWrapper>
-          {menuItems.dips.map(({ name, description, src }) => (
-            <Card title={name} description={description} src={src} />
+          {menuItems.dips.map(({ name, description, src, price }) => (
+            <Card title={name} description={description} src={src} price={price} />
           ))}
         </CardWrapper>
       </Dips>
@@ -73,6 +81,9 @@ const Menu = () => {
       <Desserts></Desserts>
 
       {/* we are going to need an addItem function that adds the order to a cookie */}
+      {
+        showModal && <Modal>This is the modal!</Modal>
+      }
     </MenuWrapper>
   );
 };
@@ -81,6 +92,7 @@ const MenuWrapper = styled.div`
   max-width: 1400px;
   margin: 1rem auto auto auto;
   padding: 1rem;
+  position:relative;
 `;
 const PopularItems = styled.div`
   margin-bottom: 4rem;

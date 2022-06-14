@@ -5,6 +5,7 @@ import Home from "./pages/home/components/Home";
 import Order from "./pages/order/components/Order";
 import Menu from "./pages/order/components/menu/Menu";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import GetOrderLocation from "./pages/order/components/GetOrderLocation";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/locations" element={<GetOrderLocation />} />
         <Route path="/order/:method" element={<Order />} />
       </Route>
     </Routes>

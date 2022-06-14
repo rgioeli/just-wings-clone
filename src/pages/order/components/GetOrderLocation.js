@@ -201,7 +201,7 @@ const GetOrderLocation = ({ setOrderLocation }) => {
 
   return (
     <GetOrderLocationWrapper>
-      <h2>FIND A LOCATION TO PLACE YOUR ORDER</h2>
+      <h2 className="make-text-white">FIND A LOCATION TO PLACE YOUR ORDER</h2>
       <Spacer direction={"bottom"} spacing={"1rem"} />
       <LocationHeader>
         <Button
@@ -211,7 +211,7 @@ const GetOrderLocation = ({ setOrderLocation }) => {
           width={"100%"}
           text={"Use My Location"}
         />
-        <h4>OR</h4>
+        <h4 className="make-text-white">OR</h4>
         <GetUserAddress>
           <input
             type="text"
@@ -253,7 +253,7 @@ const GetOrderLocationWrapper = styled.div`
   align-items: center;
   padding: 1rem;
 
-  &:first-child {
+  .make-text-white {
     color: #fff;
   }
 `;

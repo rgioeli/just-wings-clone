@@ -1,10 +1,17 @@
 import styled from "styled-components";
 import Button from "../../../layout/Button";
+import { useNavigate } from "react-router-dom";
 
 const LocationResults = ({ locations, setOrderLocation }) => {
+  const navigate = useNavigate()
   const handleSetLocation = (location) => {
-    document.cookie = `selectedAddress=${location.formatted_address}; path=/; `; // set the selected address in the cookies
-    setOrderLocation(location);
+    if (setOrderLocation) {
+      document.cookie = `selectedAddress=${location.formatted_address}; path=/; `; // set the selected address in the cookies
+      setOrderLocation(location);
+    } else {
+      document.cookie = `selectedAddress=${location.formatted_address}; path=/; `; // set the selected address in the cookies
+      navigate("/order/delivery")
+    }
   };
 
   return (
