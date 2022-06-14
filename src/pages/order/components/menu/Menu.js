@@ -6,11 +6,16 @@ import { useState } from "react";
 import Modal from "./Modal";
 
 const Menu = () => {
-  const [showModal, setShowModal] = useState(true);
+  const [modalData, setModalData] = useState({
+    display: false,
+  });
 
-  const handleAddToOrder = () => {
-    setShowModal(!showModal)
-  }
+  const handleAddToOrder = (props) => {
+    setModalData(() => {
+      console.log({ ...props, display: true });
+      return { ...props, display: true };
+    });
+  };
 
   return (
     <MenuWrapper>
@@ -25,8 +30,15 @@ const Menu = () => {
           }
         />
         <CardWrapper>
-          {menuItems.popularItems.map(({ name, description, src, price }) => (
-            <Card title={name} description={description} src={src} price={price} />
+          {menuItems.popularItems.map((props) => (
+            <Card
+              key={props.name}
+              title={props.name}
+              description={props.description}
+              src={props.src}
+              price={props.price}
+              handleClick={() => handleAddToOrder(props)}
+            />
           ))}
         </CardWrapper>
       </PopularItems>
@@ -34,7 +46,13 @@ const Menu = () => {
         <Header />
         <CardWrapper>
           {menuItems.comboMeals.map(({ name, description, src, price }) => (
-            <Card title={name} description={description} src={src} price={price} />
+            <Card
+              key={name}
+              title={name}
+              description={description}
+              src={src}
+              price={price}
+            />
           ))}
         </CardWrapper>
       </ComboMeals>
@@ -47,7 +65,13 @@ const Menu = () => {
         />
         <CardWrapper>
           {menuItems.justWings.map(({ name, description, src, price }) => (
-            <Card title={name} description={description} src={src} price={price} />
+            <Card
+              key={name}
+              title={name}
+              description={description}
+              src={src}
+              price={price}
+            />
           ))}
         </CardWrapper>
       </JustWings>
@@ -60,7 +84,13 @@ const Menu = () => {
         />
         <CardWrapper>
           {menuItems.partyStyle.map(({ name, description, src, price }) => (
-            <Card title={name} description={description} src={src} price={price} />
+            <Card
+              key={name}
+              title={name}
+              description={description}
+              src={src}
+              price={price}
+            />
           ))}
         </CardWrapper>
       </PartyStyle>
@@ -73,7 +103,13 @@ const Menu = () => {
         />
         <CardWrapper>
           {menuItems.dips.map(({ name, description, src, price }) => (
-            <Card title={name} description={description} src={src} price={price} />
+            <Card
+              key={name}
+              title={name}
+              description={description}
+              src={src}
+              price={price}
+            />
           ))}
         </CardWrapper>
       </Dips>
@@ -81,9 +117,11 @@ const Menu = () => {
       <Desserts></Desserts>
 
       {/* we are going to need an addItem function that adds the order to a cookie */}
-      {
-        showModal && <Modal>This is the modal!</Modal>
-      }
+      {modalData && modalData.display === true && (
+        <Modal setModalData={setModalData} modalData={modalData}>
+          This is the modal!
+        </Modal>
+      )}
     </MenuWrapper>
   );
 };
@@ -92,7 +130,7 @@ const MenuWrapper = styled.div`
   max-width: 1400px;
   margin: 1rem auto auto auto;
   padding: 1rem;
-  position:relative;
+  position: relative;
 `;
 const PopularItems = styled.div`
   margin-bottom: 4rem;

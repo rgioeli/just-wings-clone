@@ -5,7 +5,8 @@ const Card = ({
   src = "/images/menu/combo1.jpg",
   title = "11 Boneless Wings",
   description = "11 Boneless Wings and Fries with your choice of one of our fountain drinks.",
-  price = 9
+  price = 9,
+  handleClick,
 }) => {
   return (
     <CardWrapper>
@@ -18,7 +19,12 @@ const Card = ({
           <DescriptionText>{description}</DescriptionText>
           <p className="price-text">{`$${price.toFixed(2)}`}</p>
         </div>
-        <Button text={"Add to order"} bgColor={"#f47d20"} color={"#fff"} />
+        <Button
+          handleClick={handleClick}
+          text={"Add to order"}
+          bgColor={"#f47d20"}
+          color={"#fff"}
+        />
       </Body>
     </CardWrapper>
   );
