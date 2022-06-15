@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { cookieParser } from "../../../cookieParser/cookieParser";
 import Menu from "./menu/Menu";
-import Button from "../../../layout/Button";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 const Order = () => {
