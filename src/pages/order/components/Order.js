@@ -4,12 +4,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { cookieParser } from "../../../cookieParser/cookieParser";
-<<<<<<< HEAD
 import Menu from "../../menu/components/Menu";
-import Button from "../../../layout/Button";
-=======
-import Menu from "./menu/Menu";
->>>>>>> a1be36629b5668c35f7f31b7365b314dcc148995
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 const Order = () => {
