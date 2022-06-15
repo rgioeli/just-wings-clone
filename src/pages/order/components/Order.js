@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import GetOrderLocation from "./GetOrderLocation";
+import GetOrderLocation from "../../locations/components/GetOrderLocation";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { cookieParser } from "../../../cookieParser/cookieParser";
-import Menu from "./menu/Menu";
+import Menu from "../../menu/components/Menu";
 import Button from "../../../layout/Button";
 import { FaMapMarkerAlt } from "react-icons/fa";
 

@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import Card from "./Card";
 import Header from "./Header";
-import { menuItems } from "../../../../data/menuItems";
 import { useState } from "react";
 import Modal from "./Modal";
+import { menuItems } from "../../../data/menuItems";
 
 const Menu = () => {
   const [modalData, setModalData] = useState({
@@ -12,7 +12,6 @@ const Menu = () => {
 
   const handleAddToOrder = (props) => {
     setModalData(() => {
-      console.log({ ...props, display: true });
       return { ...props, display: true };
     });
   };

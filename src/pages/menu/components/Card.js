@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Button from "../../../../layout/Button";
+import Button from "../../../layout/Button";
 
 const Card = ({
   src = "/images/menu/combo1.jpg",
