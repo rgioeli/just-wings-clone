@@ -44,13 +44,14 @@ const Menu = () => {
       <ComboMeals>
         <Header />
         <CardWrapper>
-          {menuItems.comboMeals.map(({ name, description, src, price }) => (
+          {menuItems.comboMeals.map((props) => (
             <Card
-              key={name}
-              title={name}
-              description={description}
-              src={src}
-              price={price}
+              key={props.name}
+              title={props.name}
+              description={props.description}
+              src={props.src}
+              price={props.price}
+              handleClick={() => handleAddToOrder(props)}
             />
           ))}
         </CardWrapper>
@@ -63,13 +64,14 @@ const Menu = () => {
           }
         />
         <CardWrapper>
-          {menuItems.justWings.map(({ name, description, src, price }) => (
+          {menuItems.justWings.map((props) => (
             <Card
-              key={name}
-              title={name}
-              description={description}
-              src={src}
-              price={price}
+              key={props.name}
+              title={props.name}
+              description={props.description}
+              src={props.src}
+              price={props.price}
+              handleClick={() => handleAddToOrder(props)}
             />
           ))}
         </CardWrapper>
@@ -82,13 +84,14 @@ const Menu = () => {
           }
         />
         <CardWrapper>
-          {menuItems.partyStyle.map(({ name, description, src, price }) => (
+          {menuItems.partyStyle.map((props) => (
             <Card
-              key={name}
-              title={name}
-              description={description}
-              src={src}
-              price={price}
+              key={props.name}
+              title={props.name}
+              description={props.description}
+              src={props.src}
+              price={props.price}
+              handleClick={() => handleAddToOrder(props)}
             />
           ))}
         </CardWrapper>
@@ -101,19 +104,42 @@ const Menu = () => {
           }
         />
         <CardWrapper>
-          {menuItems.dips.map(({ name, description, src, price }) => (
+          {menuItems.dips.map((props) => (
             <Card
-              key={name}
-              title={name}
-              description={description}
-              src={src}
-              price={price}
+              key={props.name}
+              title={props.name}
+              description={props.description}
+              src={props.src}
+              price={props.price}
+              handleClick={() => handleAddToOrder(props)}
             />
           ))}
         </CardWrapper>
       </Dips>
-      <Sides></Sides>
-      <Desserts></Desserts>
+      <Sides>
+        {menuItems.fries.map((props) => (
+          <Card
+            key={props.name}
+            title={props.name}
+            description={props.description}
+            src={props.src}
+            price={props.price}
+            handleClick={() => handleAddToOrder(props)}
+          />
+        ))}
+      </Sides>
+      <Desserts>
+        {menuItems.desserts.map((props) => (
+          <Card
+            key={props.name}
+            title={props.name}
+            description={props.description}
+            src={props.src}
+            price={props.price}
+            handleClick={() => handleAddToOrder(props)}
+          />
+        ))}
+      </Desserts>
 
       {/* we are going to need an addItem function that adds the order to a cookie */}
       {modalData && modalData.display === true && (

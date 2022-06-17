@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import { menuItems } from "../../../data/menuItems";
 import ModalInput from "./ModalInput";
+import { boldString } from "../../../helpers/functions/boldString";
 
 const WingFlavors = ({ numberOfSauceChoices, modalData, setModalData }) => {
   const handleChooseWingFlavor = (e) => {
@@ -11,16 +12,6 @@ const WingFlavors = ({ numberOfSauceChoices, modalData, setModalData }) => {
     updatedSaucesArray[wingIndex] = wingFlavor;
 
     setModalData((prevState) => ({ ...prevState, sauces: updatedSaucesArray }));
-  };
-
-  const boldString = (string, char) => {
-    // get the string we need, split it, and return the first part and second part of the string.
-    const splitString = string.split(char);
-    return (
-      <p>
-        {splitString[0]} -<span>{splitString[1]}</span>
-      </p>
-    );
   };
 
   useEffect(() => {

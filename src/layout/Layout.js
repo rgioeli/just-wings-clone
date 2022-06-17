@@ -11,16 +11,27 @@ import Spacer from "../helpers/Spacer";
 import Footer from "./Footer";
 import HamburgerMenu from "./HamburgerMenu";
 import { useEffect, useState } from "react";
+import BottomCartBar from "../pages/menu/BottomCartBar";
 
 const Layout = () => {
   const [toggleNav, setToggleNav] = useState(false);
   const [intervalId, setIntervalId] = useState();
+  const [bottomCartBar, setBottomCartBar] = useState(false);
+
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
     if (toggleNav) {
       setToggleNav(false);
+    }
+
+    if (location.pathname === "/order/delivery") {
+      setBottomCartBar(true);
+    } else {
+      if (bottomCartBar) {
+        setBottomCartBar(false);
+      }
     }
   }, [location.key]);
 
@@ -33,18 +44,12 @@ const Layout = () => {
         <Links>
           <div>
             <Button
-              text={"ORDER DELIVERY"}
+              text={"ORDER NOW"}
               color={"#fff"}
               bgColor={"#f47d20"}
               handleClick={() => navigate("/order/delivery")}
             />
             <Spacer direction={"right"} spacing={".5rem"} />
-            <Button
-              text={"ORDER PICKUP"}
-              color={"#fff"}
-              bgColor={"#ef5124"}
-              handleClick={() => navigate("/order/pickup")}
-            />
           </div>
           <Spacer direction={"right"} spacing={"2rem"} />
           <ul>
@@ -87,7 +92,7 @@ const Layout = () => {
             </li>
             <li>
               <Button
-                text={"ORDER DELIVERY"}
+                text={"ORDER NOW"}
                 color={"#fff"}
                 bgColor={"#f47d20"}
                 width={"100%"}
@@ -97,24 +102,14 @@ const Layout = () => {
                 }}
               />
             </li>
-            <Spacer direction={"top"} spacing={"0.5rem"} />
-            <li>
-              <Button
-                text={"ORDER PICKUP"}
-                color={"#fff"}
-                width={"100%"}
-                bgColor={"#ef5124"}
-                handleClick={() => {
-                  setToggleNav(false);
-                  navigate("/order/pickup");
-                }}
-              />
-            </li>
           </ul>
         </HamburgerMenuDropdown>
       )}
       <Outlet />
       <Footer />
+      <div className="cart-bar">
+        <BottomCartBar />
+      </div>
     </LayoutWrapper>
   );
 };
@@ -149,6 +144,15 @@ const LayoutWrapper = styled.div`
         height: 100px;
       }
     }
+  }
+
+  .cart-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin: auto;
   }
 `;
 

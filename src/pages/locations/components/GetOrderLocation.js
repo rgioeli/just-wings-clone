@@ -23,15 +23,14 @@ const GetOrderLocation = ({ setOrderLocation }) => {
   useEffect(() => {
     // 1. we are first checking to see if our google object is part of the window object
     // 2. if it's not then we need to attatch the object to the window object so we can use all the google API's
-    const apiSource =
-      "https://maps.googleapis.com/maps/api/js?key=AIzaSyATi4cHrNN_a1SmNm9bhXlz2jLvWQ1pvcM&libraries=places";
     if (!window.google) {
       const googleScript = document.createElement("script");
-      googleScript.src = apiSource;
+      googleScript.src =
+        "https://maps.googleapis.com/maps/api/js?key=AIzaSyATi4cHrNN_a1SmNm9bhXlz2jLvWQ1pvcM&libraries=places";
+      window.document.body.appendChild(googleScript);
       googleScript.addEventListener("load", () => {
         new window.google.maps.places.SearchBox(input.current);
       });
-      window.document.body.appendChild(googleScript);
     } else {
       new window.google.maps.places.SearchBox(input.current);
     }
@@ -155,6 +154,8 @@ const GetOrderLocation = ({ setOrderLocation }) => {
 
   const getCoords = async (address) => {
     const geocoder = new window.google.maps.Geocoder();
+    console.log(geocoder);
+    console.log("Above this should be geocoder");
     try {
       const coords = await geocoder.geocode({ address });
       return {
@@ -191,7 +192,8 @@ const GetOrderLocation = ({ setOrderLocation }) => {
     if (permission.state === "denied") return;
 
     setLoading(true);
-    window.navigator.geolocation.getCurrentPosition(
+
+    navigator.geolocation.getCurrentPosition(
       ({ coords }) => {
         finalizeMap({ lat: coords.latitude, lng: coords.longitude });
       },
