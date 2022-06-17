@@ -10,8 +10,9 @@ import Button from "./Button";
 import Spacer from "../helpers/Spacer";
 import Footer from "./Footer";
 import HamburgerMenu from "./HamburgerMenu";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import BottomCartBar from "../pages/menu/BottomCartBar";
+import OrderContext from "../context/orderContext";
 
 const Layout = () => {
   const [toggleNav, setToggleNav] = useState(false);
@@ -20,6 +21,7 @@ const Layout = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
+  const context = useContext(OrderContext);
 
   useEffect(() => {
     if (toggleNav) {
@@ -107,9 +109,11 @@ const Layout = () => {
       )}
       <Outlet />
       <Footer />
-      <div className="cart-bar">
-        <BottomCartBar />
-      </div>
+      {context.order.length > 0 && (
+        <div className="cart-bar">
+          <BottomCartBar />
+        </div>
+      )}
     </LayoutWrapper>
   );
 };
