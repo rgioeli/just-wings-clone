@@ -116,30 +116,34 @@ const Menu = () => {
           ))}
         </CardWrapper>
       </Dips>
-      <Sides>
-        {menuItems.fries.map((props) => (
-          <Card
-            key={props.name}
-            title={props.name}
-            description={props.description}
-            src={props.src}
-            price={props.price}
-            handleClick={() => handleAddToOrder(props)}
-          />
-        ))}
+      {/* <Sides>
+        <CardWrapper>
+          {menuItems.fries.map((props) => (
+            <Card
+              key={props.name}
+              title={props.name}
+              description={props.description}
+              src={props.src}
+              price={props.price}
+              handleClick={() => handleAddToOrder(props)}
+            />
+          ))}
+        </CardWrapper>
       </Sides>
       <Desserts>
-        {menuItems.desserts.map((props) => (
-          <Card
-            key={props.name}
-            title={props.name}
-            description={props.description}
-            src={props.src}
-            price={props.price}
-            handleClick={() => handleAddToOrder(props)}
-          />
-        ))}
-      </Desserts>
+        <CardWrapper>
+          {menuItems.desserts.map((props) => (
+            <Card
+              key={props.name}
+              title={props.name}
+              description={props.description}
+              src={props.src}
+              price={props.price}
+              handleClick={() => handleAddToOrder(props)}
+            />
+          ))}
+        </CardWrapper>
+      </Desserts> */}
 
       {/* we are going to need an addItem function that adds the order to a cookie */}
       {modalData && modalData.display === true && (

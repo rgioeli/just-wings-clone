@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { menuItems } from "../../../data/menuItems";
 import ModalInput from "./ModalInput";
-import { boldString } from "../../../helpers/functions/boldString";
 
 const AdditionalUpsellItems = ({ modalData, setModalData }) => {
   const addAdditionalItem = (e, name, price) => {
