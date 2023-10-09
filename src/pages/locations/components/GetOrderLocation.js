@@ -25,8 +25,7 @@ const GetOrderLocation = ({ setOrderLocation }) => {
     // 2. if it's not then we need to attatch the object to the window object so we can use all the google API's
     if (!window.google) {
       const googleScript = document.createElement("script");
-      googleScript.src =
-        "https://maps.googleapis.com/maps/api/js?key=AIzaSyATi4cHrNN_a1SmNm9bhXlz2jLvWQ1pvcM&libraries=places";
+      googleScript.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}&libraries=places`;
       window.document.body.appendChild(googleScript);
       googleScript.addEventListener("load", () => {
         new window.google.maps.places.SearchBox(input.current);
